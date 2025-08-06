@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Cow Health Monitoring</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SmartCow Monitor</div>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard">
+            <h1>Cow Health Dashboard</h1>
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>Temperature</h3>
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Heart Rate</h3>
+                    <canvas id="heartRateChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Activity Level</h3>
+                    <canvas id="activityChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Milk Production</h3>
+                    <canvas id="milkChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="alerts">
+            <h2>Health Alerts</h2>
+            <div class="alerts-container" id="alertsList">
+                <!-- Alerts will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+<body>
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Smart Cow Health Monitoring</h1>
+            <p>Real-time health tracking for your livestock</p>
+        </div>
+    </div>
+    <section id="dashboard">
+        <div class="stats-overview">
+            <div class="stat-card">
+                <i class="fas fa-thermometer-half"></i>
+                <h3>Total Cows</h3>
+                <p class="stat-number">150</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Healthy Cows</h3>
+                <p class="stat-number">142</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Alerts</h3>
+                <p class="stat-number">3</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-tint"></i>
+                <h3>Milk Production</h3>
+                <p class="stat-number">1,250L</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2>Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Real-time Monitoring</h3>
+                <p>Track vital signs and health metrics in real-time</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bell"></i>
+                <h3>Smart Alerts</h3>
+                <p>Instant notifications for health anomalies</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-history"></i>
+                <h3>Historical Data</h3>
+                <p>Access detailed health history and trends</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Access</h3>
+                <p>Monitor your herd from anywhere</p>
+            </div>
+        </div>
+    </section>
+<div class="stat-card" onclick="showCowDetails()">
+    <i class="fas fa-thermometer-half"></i>
+    <h3>Total Cows</h3>
+    <p class="stat-number">150</p>
+</div>
+
+<!-- Add this new section for detailed cow view -->
+<div id="cowDetailsView" class="details-view">
+    <div class="details-header">
+        <h2>Cow Details</h2>
+        <button class="close-btn" onclick="closeCowDetails()">×</button>
+    </div>
+    <div class="details-content">
+        <div class="cow-list">
+            <div class="search-bar">
+                <input type="text" id="cowSearch" placeholder="Search cows...">
+                <select id="cowFilter">
+                    <option value="all">All Cows</option>
+                    <option value="lactating">Lactating</option>
+                    <option value="dry">Dry Period</option>
+                    <option value="pregnant">Pregnant</option>
+                </select>
+            </div>
+            <div class="cow-grid" id="cowGrid">
+                <!-- Cow cards will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="stat-card" onclick="showHealthyCowsDetails()">
+    <i class="fas fa-heartbeat"></i>
+    <h3>Healthy Cows</h3>
+    <p class="stat-number">142</p>
+</div>
+
+<!-- Add this new section for healthy cows detailed view -->
+<div id="healthyCowsView" class="details-view">
+    <div class="details-header">
+        <h2>Healthy Cows Details</h2>
+        <button class="close-btn" onclick="closeHealthyCowsDetails()">×</button>
+    </div>
+    <div class="details-content">
+        <div class="health-overview">
+            <div class="health-stats">
+                <div class="stat-box">
+                    <h4>Health Score</h4>
+                    <p class="stat-value">95%</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Average Temperature</h4>
+                    <p class="stat-value">38.5°C</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Average Heart Rate</h4>
+                    <p class="stat-value">65 BPM</p>
+                </div>
+            </div>
+        </div>
+        <div class="healthy-cows-list">
+            <div class="search-bar">
+                <input type="text" id="healthyCowSearch" placeholder="Search healthy cows...">
+                <select id="healthFilter">
+                    <option value="all">All Healthy Cows</option>
+                    <option value="excellent">Excellent Health</option>
+                    <option value="good">Good Health</option>
+                    <option value="monitoring">Under Monitoring</option>
+                </select>
+            </div>
+            <div class="cow-grid" id="healthyCowGrid">
+                <!-- Healthy cow cards will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html> 
